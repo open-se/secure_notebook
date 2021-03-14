@@ -20,6 +20,15 @@ syncHistoryWithStore(store, routerHistory);
 
 const rootElement = document.querySelector(document.currentScript.getAttribute('data-container'));
 
+const customTitlebar = require('custom-electron-titlebar');
+
+
+new customTitlebar.Titlebar({
+	backgroundColor: customTitlebar.Color.fromHex('#212121'),
+  shadow: true,
+  unfocusEffect: true
+});
+
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={routerHistory}>{routes}</ConnectedRouter>

@@ -19,6 +19,43 @@ const installExtensions = async () => {
   }
 };
 
+
+global.loadLoginMenu = () =>{
+  console.log("Loading Login Menu");
+  const template = [
+      {
+      label: "File",
+      submenu: [
+          {
+          label: 'Exit',
+          role: 'quit'
+          }
+      ]
+      }
+  ];
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+}
+
+global.loadLoggedInMenu = () =>{
+  console.log("Loading Logged In Menu");
+  const template = [
+      {
+      label: "File",
+      submenu: [
+          {
+          label: 'Exit',
+          role: 'quit'
+          },
+          {
+              label: 'Logout',
+              role: 'logout'
+          }
+      ]
+      }
+  ];
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+}
+
 crashReporter.start({
   productName: 'YourName',
   companyName: 'YourCompany',
@@ -48,6 +85,7 @@ app.on('ready', async () => {
     webPreferences: {
       nodeIntegration: true,
     },
+    frame: false
   });
 
   mainWindow.loadFile(path.resolve(path.join(__dirname, '../renderer/index.html')));
@@ -100,4 +138,6 @@ app.on('ready', async () => {
       ]).popup(mainWindow);
     });
   }
+
+  
 });
